@@ -1,0 +1,114 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMNgI8PpX3Ja0/xePm8t7Yv",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Yamila1423/Yamila1423/blob/main/Pr%C3%A1ctico%20lista%20de%20pel%C3%ADculas%20\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Lista de películas"
+      ],
+      "metadata": {
+        "id": "yhZHlyXEitaf"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "\n",
+        "Class película\n",
+        " def_init_(self,nombre):\n",
+        "   Self.nombre=nombre\n",
+        "\n",
+        "Class listas:\n",
+        "  Def_inif_(self,documento):\n",
+        "  Self.documento=documento\n",
+        "  Try:\n",
+        " Open(self.documento,x).close()\n",
+        "#crea el documento si no existe\n",
+        "Execpt FileExistsError:\n",
+        "  Pass\n",
+        "\n",
+        " def agregar(self,nombre,película):\n",
+        " With open(self.documento,'a') as f:\n",
+        " f.write(nombre_pelicula+\"\\n')\n",
+        "\n",
+        " def listar(self):\n",
+        "   try:\n",
+        "   With open(self.documento,'r')as f:\n",
+        "   Contenido= f.readlines()\n",
+        "   if contenido:\n",
+        "   Print(\"películas:\")\n",
+        "   for linea in contenido:\n",
+        "   Print (\".\",linea.strip())\n",
+        "    else:\n",
+        "   Print(\"No hay hay películas cargadas.\")\n",
+        "   Except FileNotFoundError:\n",
+        "  Print(\"lista no encontrado.\")\n",
+        "  \n",
+        "   def eliminar(self):\n",
+        "     Import os\n",
+        "    If os.path.exists(self.documento):\n",
+        "     Os.remove(self.documento)\n",
+        "     Print(\"la lista no existe.\")\n",
+        "\n",
+        "   def menú():\n",
+        "     print(\"\\n1.agregar película\")\n",
+        "     print(\"2.ver películas\")\n",
+        "     print(\"3.borrar lista\")\n",
+        "     Print(\"4.salir\")\n",
+        "\n",
+        "  def iniciar()\n",
+        "     Nombre=input(\"nombre del documento (.txt):\")\n",
+        "     Documento=documento(nombre)\n",
+        "\n",
+        "  while True:\n",
+        "     Menú()\n",
+        "     Opción=input(\"Opción:\")\n",
+        "     \n",
+        "  if opción=='1':\n",
+        "     nombre_peli = input(\"Título de la película:\")\n",
+        "     peli = Película(nombre_peli)\n",
+        "     Lista.agregada(peli.nombre)\n",
+        "     print(\"pelicula guardada.\")\n",
+        "     elif opción=='2':\n",
+        "     Catálogo.listar()\n",
+        "     elif opción== '3':\n",
+        "     Confirmar= input(\"¿Borrar documento?(S/n):\")\n",
+        "     if confirmar.lowe()=='s':\n",
+        "     documento.eliminar()\n",
+        "     elif opción =='4':\n",
+        "     print(\"Adiós.\")\n",
+        "     break\n",
+        "     else:\n",
+        "     print(\"opción no válida.\")"
+      ],
+      "metadata": {
+        "id": "prFSyDWniwP0"
+      }
+    }
+  ]
+}
