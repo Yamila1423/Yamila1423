@@ -1,0 +1,42 @@
+lista de peliculas 📽️
+class Pelicula:
+    def __init__(self, titulo, director, año, genero):
+        self.titulo = titulo
+        self.director = director
+        self.año = año
+        self.genero = genero
+
+class CatalogoPeliculas:📼
+    def __init__(self):
+        self.peliculas = []
+
+    def agregar_pelicula(self, pelicula):
+        self.peliculas.append(pelicula.__dict__)
+
+    def guardar_catalogo(self, archivo):
+        with open(archivo, "w") as f:
+            json.dump(self.peliculas, f)
+
+    def cargar_catalogo(self, archivo):
+        try:
+            with open(archivo, "r") as f:
+                self.peliculas = json.load(f)
+        except FileNotFoundError:
+            print("El archivo no existe")
+
+    def mostrar_catalogo(self):
+        for pelicula in self.peliculas:
+            print(f"Título: {pelicula['titulo']}")
+            print(f"Director: {pelicula['director']}")
+            print(f"Año: {pelicula['año']}")
+            print(f"Género: {pelicula['genero']}")
+            print("------------------------")
+
+# Crear un catálogo de películas
+catalogo = CatalogoPeliculas()
+
+# Agregar películas
+pelicula1 = Pelicula("El Padrino", "Francis Ford Coppola", 1972, "Drama") 
+pelicula2 = Pelicula("La Lista de Schindler", "Steven Spielberg", 1993, "Drama")
+catalogo.agregar_pelicula(pelicula1)
+catalogo.agregar_pelicula(pelicula)
