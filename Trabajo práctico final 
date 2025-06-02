@@ -1,0 +1,123 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyOIfETlCp225t5eihiHkPqd",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Yamila1423/Yamila1423/blob/main/Trabajo%20pr%C3%A1ctico%20final%20\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "6h7FUePKNZjq"
+      },
+      "outputs": [],
+      "source": [
+        "Lista de peliculas"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "class Pelicula:\n",
+        "    def __init__(self, nombre):\n",
+        "        self.nombre = nombre\n",
+        "\n",
+        "class Lista:\n",
+        "    def __init__(self, documento):\n",
+        "        self.documento = documento\n",
+        "        try:\n",
+        "            open(self.documento, 'x').close()\n",
+        "        except FileExistsError:\n",
+        "            pass\n",
+        "\n",
+        "    def agregar(self, nombre_pelicula):\n",
+        "        with open(self.documento, 'a') as f:\n",
+        "            f.write(nombre_pelicula + '\\n')\n",
+        "\n",
+        "    def listar(self):\n",
+        "        try:\n",
+        "            with open(self.documento, 'r') as f:\n",
+        "                contenido = f.readlines()\n",
+        "                if contenido:\n",
+        "                    print(\"Películas:\")\n",
+        "                    for linea in contenido:\n",
+        "                        print(\"•\", linea.strip())\n",
+        "                else:\n",
+        "                    print(\"No hay películas cargadas.\")\n",
+        "        except FileNotFoundError:\n",
+        "            print(\"Lista no encontrada.\")\n",
+        "\n",
+        "    def eliminar(self):\n",
+        "        import os\n",
+        "        if os.path.exists(self.documento):\n",
+        "            os.remove(self.documento)\n",
+        "            print(\"Documento eliminado.\")\n",
+        "        else:\n",
+        "            print(\"El documento no existe.\")\n",
+        "\n",
+        "def menu():\n",
+        "    print(\"\\n1. Agregar película\")\n",
+        "    print(\"2. Ver películas\")\n",
+        "    print(\"3. Borrar lista\")\n",
+        "    print(\"4. Salir\")\n",
+        "\n",
+        "def iniciar():\n",
+        "    nombre = input(\"Nombre del documento (.txt): \")\n",
+        "    documento = Lista(nombre)\n",
+        "    \n",
+        "    while True:\n",
+        "        menu()\n",
+        "        opcion = input(\"Opción: \")\n",
+        "        \n",
+        "        if opcion == '1':\n",
+        "            nombre_peli = input(\"Título de la película: \")\n",
+        "            peli = Pelicula(nombre_peli)\n",
+        "            documento.agregar(peli.nombre)\n",
+        "            print(\"Película guardada.\")\n",
+        "            \n",
+        "        elif opcion == '2':\n",
+        "            documento.listar()\n",
+        "            \n",
+        "        elif opcion == '3':\n",
+        "            confirmar = input(\"¿Borrar documento? (s/n): \")\n",
+        "            if confirmar.lower() == 's':\n",
+        "                documento.eliminar()\n",
+        "                \n",
+        "        elif opcion == '4':\n",
+        "            print(\"Adiós.\")\n",
+        "            break\n",
+        "            \n",
+        "        else:\n",
+        "            print(\"Opción no válida.\")\n",
+        "\n",
+        "if __name__ == \"__main__\":\n",
+        "    iniciar()"
+      ],
+      "metadata": {
+        "id": "s7TNQgbMNb27"
+      }
+    }
+  ]
+}
